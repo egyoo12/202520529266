@@ -1,0 +1,15 @@
+#compiled files to ignore
+*.exe
+*.dll
+*.o
+*.so
+
+#build directionories to ignore
+build/
+Debug/
+Release/
+
+#visual studio files to ignore
+.vs/
+*.obj
+*.pdb
