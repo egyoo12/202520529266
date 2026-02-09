@@ -1,0 +1,5 @@
+'show' - shows detailed information about a specific commit
+'log' - displays the commit history of the current branch
+'checkout' - switches branches or restores files/versions from a previous commit
+'init' - initialises a new git repository by creating the .git directory
+'reset' - moves the current branch pointer to another commit and can undo commits
