@@ -1,25 +1,17 @@
-# calc c_make/cmakelists.txt
-cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
-project(calc)
-
-# this project contains a library
-add_library(maths adder.cpp)
-
-# can also force cmake to always build a static/shared library:
-#add_library(maths STATIC adder.cpp)
-#add_library(maths SHARED adder.cpp)
-
-if(NOT BUILD_SHARED_LIBS)
-# if static libraries are compiled we need to somehow communicate
-# that to the source code. the definition will be used to determine
-# how MATHSLIB_API is defined in adder.h
-add_definitions(-Dmaths_STATIC)
+if (WIN32)
+	set(CPACK_GENERATOR "NSIS")
+else()
+	set(CPACK_GENERATOR "ZIP")
 endif()
 
-# it also contains an executeable
+include(CPack)
+
+add_library(maths adder.cpp)
+
 add_executable(calc calc.cpp)
+target_link_Libraries(calc maths)
 
-# the executable uses the library
-target_link_libraries(calc maths)
-
-# /calc_cmake/cmakelists.txt
+install(TARGETS calc maths
+	RUNTIME DESTINATION bin
+	LIBRARY DESTINATION lib
+	ARCHIVE DESTINATION lib/static)
