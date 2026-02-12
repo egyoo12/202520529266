@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 4.2)
 add_library(maths adder.cpp)
 
 add_executable(calc calc.cpp)
