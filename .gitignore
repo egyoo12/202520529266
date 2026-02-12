@@ -13,3 +13,6 @@ Release/
 .vs/
 *.obj
 *.pdb
+
+#misc files to ignore
+*.lib
