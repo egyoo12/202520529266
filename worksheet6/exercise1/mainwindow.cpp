@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton, &QPushButton::released, this, &MainWindow::handleButton1);
     connect(ui->pushButton_2, &QPushButton::released, this, &MainWindow::handleButton2);
     connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
+    connect(ui->treeView, &QTreeView::clicked, this, &MainWindow::handleTreeClicked);
 
     // create/allocate the ModelList
     this->partList = new ModelPartList("PartsList");
@@ -60,4 +61,11 @@ void MainWindow::handleButton1()
 void MainWindow::handleButton2()
 {
     emit statusUpdateMessage("button 2 has been clicked!", 2000);
+}
+
+void MainWindow::handleTreeClicked(const QModelIndex& index)
+{
+    ModelPart* selectedPart = static_cast<ModelPart*>(index.internalPointer());
+    QString name = selectedPart->data(0).toString();
+    emit statusUpdateMessage("selected: " + name, 2000);
 }

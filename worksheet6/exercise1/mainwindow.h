@@ -21,6 +21,7 @@ public:
 public slots:
     void handleButton1();
     void handleButton2();
+    void handleTreeClicked(const QModelIndex& index);
 
 signals:
     void statusUpdateMessage(const QString &message, int timeout);
