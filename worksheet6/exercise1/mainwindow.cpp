@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "OptionDialog.h"
 #include <QMessageBox>
 #include <QFileDialog>
 
@@ -61,7 +62,17 @@ void MainWindow::handleButton1()
 
 void MainWindow::handleButton2()
 {
-    emit statusUpdateMessage("button 2 has been clicked!", 2000);
+    OptionDialog dialog(this);
+
+    if (dialog.exec() == QDialog::Accepted)
+        {
+            emit statusUpdateMessage(QString("Dialog accepted."), 2000);
+        }
+    else
+        {
+            emit statusUpdateMessage(QString("Dialog rejected."), 2000);
+        }
+
 }
 
 void MainWindow::handleTreeClicked(const QModelIndex& index)
