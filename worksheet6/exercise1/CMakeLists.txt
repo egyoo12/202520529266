@@ -16,6 +16,10 @@ set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
+	ModelPart.h
+	ModelPart.cpp
+	ModelPartList.h
+	ModelPartList.cpp
         mainwindow.ui
 )
 

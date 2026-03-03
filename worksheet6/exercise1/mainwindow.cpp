@@ -10,6 +10,41 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton, &QPushButton::released, this, &MainWindow::handleButton1);
     connect(ui->pushButton_2, &QPushButton::released, this, &MainWindow::handleButton2);
     connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
+
+    // create/allocate the ModelList
+    this->partList = new ModelPartList("PartsList");
+
+    //link it to the treeview in the gui
+    ui->treeView->setModel(this->partList);
+
+    //manually create a model tree
+    ModelPart *rootItem = this->partList->getRootItem();
+
+    //add three top level items
+    for (int i = 0; i <3; i++)
+        {
+            //create strings for both data columns
+            QString name = QString("TopLevel %1").arg(i);
+            QString visible("true");
+
+            //create child item
+            ModelPart *childItem = new ModelPart({name, visible});
+
+            //append to tree top-level
+            rootItem->appendChild(childItem);
+
+            //add five sub-items
+            for (int j = 0; j < 5; j++)
+            {
+                QString name = QString("Item %1,%2").arg(i).arg(j);
+                QString visible("true");
+
+                ModelPart *childChildItem = new ModelPart({name, visible});
+
+                //append to parent
+                childItem->appendChild(childChildItem);
+            }
+        }
 }
 
 MainWindow::~MainWindow()
