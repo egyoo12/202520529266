@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QMessageBox>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -74,5 +75,15 @@ void MainWindow::on_actionOpen_File_triggered()
 {
     //adding code to test if the action is working
     emit statusUpdateMessage(QString("Open File action triggered."), 2000);
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        tr("OpenFile"),
+        "C:\\",
+        tr("STL Files(*.stl);;Text Files(*.txt)"));
+
+    if (!fileName.isEmpty())
+    {
+        emit statusUpdateMessage("selected: " + fileName, 2000);
+    }
 }
 
