@@ -96,8 +96,28 @@ void MainWindow::on_actionOpen_File_triggered()
     {
         emit statusUpdateMessage("selected: " + fileName, 2000);
     }
-}
 
+    if (fileName.isEmpty())
+        return;
+
+    //obtains the selected item in the tree
+    QModelIndex index = ui->treeView->currentIndex();
+    if (!index.isValid())
+    {
+        emit statusUpdateMessage("No tree item selected!", 2000);
+        return;
+    }
+
+    ModelPart* part = static_cast<ModelPart*>(index.internalPointer());
+    if(!part)
+    {
+        emit statusUpdateMessage("Invalid selection.", 2000);
+        return;
+    }
+
+    QString baseName = QFileInfo(fileName).fileName();
+    part->set(0, baseName);
+}
 
 void MainWindow::on_actionItem_Options_triggered()
 {
