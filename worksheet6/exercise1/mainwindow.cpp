@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     connect(ui->pushButton, &QPushButton::released, this, &MainWindow::handleButton1);
     connect(ui->pushButton_2, &QPushButton::released, this, &MainWindow::handleButton2);
+    connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
 }
 
 MainWindow::~MainWindow()
@@ -18,10 +19,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::handleButton1()
 {
-    QMessageBox::information(this, "Info", "button 1 has been clicked!");
+    emit statusUpdateMessage("button 1 has been clicked!", 2000);
 }
 
 void MainWindow::handleButton2()
 {
-    QMessageBox::information(this, "Info", "button 2 has been clicked!");
+    emit statusUpdateMessage("button 2 has been clicked!", 2000);
 }

@@ -21,7 +21,11 @@ public slots:
     void handleButton1();
     void handleButton2();
 
+signals:
+    void statusUpdateMessage(const QString &message, int timeout);
+
 private:
     Ui::MainWindow *ui;
 };
+
 #endif // MAINWINDOW_H
