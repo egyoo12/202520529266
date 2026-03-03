@@ -1,0 +1,4 @@
+C:/Users/osunt/202520529266/worksheet6/exercise1_build/CMakeFiles/exercise1.dir
+C:/Users/osunt/202520529266/worksheet6/exercise1_build/CMakeFiles/INSTALL.dir
+C:/Users/osunt/202520529266/worksheet6/exercise1_build/CMakeFiles/ALL_BUILD.dir
+C:/Users/osunt/202520529266/worksheet6/exercise1_build/CMakeFiles/ZERO_CHECK.dir

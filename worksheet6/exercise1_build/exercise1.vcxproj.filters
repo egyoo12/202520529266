@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\osunt\202520529266\worksheet6\exercise1\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\osunt\202520529266\worksheet6\exercise1\mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\osunt\202520529266\worksheet6\exercise1\mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\include_Debug\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\include_Release\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\include_MinSizeRel\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\include_RelWithDebInfo\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\CMakeFiles\5d64f2cfa38fb4aef8ed99a8db282fdf\autouic_(CONFIG).stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\osunt\202520529266\worksheet6\exercise1\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\osunt\202520529266\worksheet6\exercise1\mainwindow.ui" />
+    <None Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\autouic_Debug.stamp" />
+    <None Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\autouic_Release.stamp" />
+    <None Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\autouic_MinSizeRel.stamp" />
+    <None Include="C:\Users\osunt\202520529266\worksheet6\exercise1_build\exercise1_autogen\autouic_RelWithDebInfo.stamp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1D2BA32E-20EE-3A0E-A941-B0B3A98F18C9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{BD6090FE-32C0-3FE6-B23B-DBDC258CB926}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{036DE389-8E33-3CC7-907A-F4CAC6BACE5E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
