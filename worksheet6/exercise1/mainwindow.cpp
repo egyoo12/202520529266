@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "OptionDialog.h"
+#include "optiondialog.h"
 #include <QMessageBox>
 #include <QFileDialog>
 
@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_2, &QPushButton::released, this, &MainWindow::handleButton2);
     connect(this, &MainWindow::statusUpdateMessage, ui->statusbar, &QStatusBar::showMessage);
     connect(ui->treeView, &QTreeView::clicked, this, &MainWindow::handleTreeClicked);
+    ui->treeView->addAction(ui->actionItem_Options);
 
     // create/allocate the ModelList
     this->partList = new ModelPartList("PartsList");
@@ -72,7 +73,6 @@ void MainWindow::handleButton2()
         {
             emit statusUpdateMessage(QString("Dialog rejected."), 2000);
         }
-
 }
 
 void MainWindow::handleTreeClicked(const QModelIndex& index)
@@ -96,5 +96,25 @@ void MainWindow::on_actionOpen_File_triggered()
     {
         emit statusUpdateMessage("selected: " + fileName, 2000);
     }
+}
+
+
+void MainWindow::on_actionItem_Options_triggered()
+{
+    QModelIndex index = ui->treeView->currentIndex();
+    ModelPart* part = static_cast<ModelPart*>(index.internalPointer());
+    OptionDialog dialog(this);
+
+    dialog.loadFromPart(part);
+
+    if (dialog.exec() == QDialog::Accepted)
+    {
+        //save dialog values
+        dialog.applyToPart(part);
+
+        //send success message
+        emit statusUpdateMessage("Saved: " + part->data(0).toString(), 3000);
+    }
+
 }
 

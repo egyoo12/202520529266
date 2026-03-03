@@ -143,4 +143,3 @@ QModelIndex ModelPartList::appendChild(QModelIndex& parent, const QList<QVariant
 
     return child;
 }
-

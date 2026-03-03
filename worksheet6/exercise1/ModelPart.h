@@ -131,6 +131,10 @@ private:
     QList<QVariant>                             m_itemData;         /**< List (array of column data for item */
     ModelPart*                                  m_parentItem;       /**< Pointer to parent */
 
+    unsigned char colourR = 255;
+    unsigned char colourG = 255;
+    unsigned char colourB = 255;
+
     /* These are some typical properties that I think the part will need, you might
      * want to add you own.
      */

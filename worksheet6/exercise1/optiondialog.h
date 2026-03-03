@@ -2,6 +2,7 @@
 #define OPTIONDIALOG_H
 
 #include <QDialog>
+#include "ModelPart.h"
 
 namespace Ui {
 class OptionDialog;
@@ -14,6 +15,9 @@ class OptionDialog : public QDialog
 public:
     explicit OptionDialog(QWidget *parent = nullptr);
     ~OptionDialog();
+
+    void loadFromPart(ModelPart* part);
+    void applyToPart(ModelPart* part);
 
 private:
     Ui::OptionDialog *ui;

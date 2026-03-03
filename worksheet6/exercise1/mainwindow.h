@@ -27,6 +27,9 @@ public slots:
 signals:
     void statusUpdateMessage(const QString &message, int timeout);
 
+private slots:
+    void on_actionItem_Options_triggered();
+
 private:
     Ui::MainWindow *ui;
     ModelPartList* partList;
