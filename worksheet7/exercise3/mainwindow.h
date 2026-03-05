@@ -3,6 +3,10 @@
 #include <QMainWindow>
 #include "ModelPart.h"
 #include "ModelPartList.h"
+#include<vtkRenderer.h>
+#include <vtkRenderer.h>
+#include <vtkGenericOpenGLRenderWindow.h>
+#include <vtkCamera.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -33,6 +37,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
     ModelPartList* partList;
+    vtkSmartPointer<vtkRenderer> renderer;
+    vtkSmartPointer<vtkGenericOpenGLRenderWindow> renderWindow;
+
+    void resetCamera();
 };
 
 #endif // MAINWINDOW_H
