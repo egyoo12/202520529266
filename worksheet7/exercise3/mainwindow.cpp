@@ -8,6 +8,7 @@
 #include <vtkPolyDataMapper.h>
 #include <vtkActor.h>
 #include <vtkProperty.h>
+#include <vtkRenderer.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -119,7 +120,7 @@ void MainWindow::on_actionOpen_File_triggered()
 
     if (!fileName.isEmpty())
     {
-        emit statusUpdateMessage("selected: " + fileName, 2000);
+        emit statusUpdateMessage("Selected: " + fileName, 2000);
     }
 
     if (fileName.isEmpty())
@@ -141,7 +142,19 @@ void MainWindow::on_actionOpen_File_triggered()
     }
 
     QString baseName = QFileInfo(fileName).fileName();
-    part->set(0, baseName);
+
+    QList<QVariant> itemData;
+    itemData << baseName << "Yes";
+
+    QModelIndex childIndex = partList->appendChild(index, itemData);
+
+    ModelPart* newPart = static_cast<ModelPart*>(childIndex.internalPointer());
+
+    newPart->loadSTL(fileName);
+    updateRender();
+    resetCamera();
+
+    emit statusUpdateMessage("Loaded STL: " + baseName, 2000);
 }
 
 void MainWindow::on_actionItem_Options_triggered()
@@ -170,4 +183,33 @@ void MainWindow::resetCamera()
     renderer->GetActiveCamera()->Elevation(30);
     renderer->ResetCameraClippingRange();
     renderWindow->Render();
+}
+
+void MainWindow::updateRender()
+{
+    renderer->RemoveAllViewProps();
+    updateRenderFromTree(partList->index(0, 0, QModelIndex()));
+    renderWindow->Render();
+}
+
+void MainWindow::updateRenderFromTree(const QModelIndex& index)
+{
+    if (index.isValid())
+    {
+        auto* part = static_cast<ModelPart*>(index.internalPointer());
+        if (part)
+        {
+            auto a = part->getActor();
+            if (a) renderer->AddActor(a);
+        }
+    }
+
+    if(!partList->hasChildren(index) || (index.flags() & Qt::ItemNeverHasChildren))
+        return;
+
+    int rows = partList->rowCount(index);
+    for (int i = 0; i < rows; ++i)
+    {
+        updateRenderFromTree(partList->index(i, 0, index));
+    }
 }
